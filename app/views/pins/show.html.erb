@@ -1,10 +1,18 @@
-<p><%= image_tag @pin.image.url(:medium) %></p>
-<p>
-  <strong>Description:</strong>
-  <%= @pin.description %>
-</p>
-
-<% if @pin.user == current_user %>
-	<%= link_to 'Edit', edit_pin_path(@pin) %> |
-	<%= link_to 'Back', pins_path %>
-<% end %>
+<%= link_to 'Back', pins_path %>
+<div class="row">
+	<div class="col-md-offset-2 col-md-8">
+		<div class="panel panel-default">
+			<div class="panel-heading center">
+				<%= image_tag @pin.image.url(:medium) %>
+			</div>
+			<div class="panel-body">
+				<p><strong><%= @pin.user.email %></strong></p>
+				<% if @pin.user == current_user %>
+          <%= link_to edit_pin_path(@pin) do %>
+            <span class="glyphicon glyphicon-edit"></span> Edit
+          <% end %>					
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
