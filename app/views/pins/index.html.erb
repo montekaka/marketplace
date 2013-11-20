@@ -6,6 +6,8 @@
       <div class="panel-body">
         <p><%= pin.description %></p>
         <p><strong><%= pin.user.email %></strong></p>
+        <p><%= link_to "Shop", pin.link, class: "btn btn-danger" %><p>
+
         <% if pin.user == current_user %>
           <div class="actions">
             <%= link_to edit_pin_path(pin) do %>

@@ -7,6 +7,10 @@
 			</div>
 			<div class="panel-body">
 				<p><strong><%= @pin.user.email %></strong></p>
+				<p><strong><%= @pin.title %></strong></p>
+				<p><strong><%= @pin.description %></strong></p>
+				<p><strong><%= link_to @pin.link, @pin.link %></strong></p>
+				
 				<% if @pin.user == current_user %>
           <%= link_to edit_pin_path(@pin) do %>
             <span class="glyphicon glyphicon-edit"></span> Edit
