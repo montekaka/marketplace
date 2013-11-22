@@ -23,6 +23,12 @@
     <%= f.label :description %>
     <%= f.text_field :description, class: "form-control" %>
   </div>
+
+  <div class="form-group">
+      <%= f.label :category %>
+      <div><%= f.select :category, Pin::CATEGORY_TYPE, class: "form-control" %></div>
+  </div>
+
   <div class="form-group">
     <%= f.label :link %>
     <%= f.text_field :link, class: "form-control" %>
