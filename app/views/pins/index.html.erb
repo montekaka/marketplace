@@ -15,8 +15,16 @@
       <%= link_to image_tag(pin.image.url(:medium)), pin %>
       <div class="panel-body">
         <p><strong><%= pin.title %></strong></p>
-        <p><%= link_to "Shop", pin.link, class: "btn btn-danger" %><p>
-
+        <p><%= link_to "Shop", pin.link, class: "btn btn-primary" %><p>
+        <a href="#" 
+                    onclick="
+                      window.open(
+                        'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent('<%= pins_url(pin) %>'), 
+                        'facebook-share-dialog', 
+                        'width=626,height=436'); 
+                      return false;" class="btn btn-danger">
+                    <i class="icon-facebook"></i>Share on Facebook
+        </a>  
         <% if pin.user == current_user %>
           <div class="actions">
             <%= link_to edit_pin_path(pin) do %>
