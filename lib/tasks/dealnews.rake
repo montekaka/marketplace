@@ -40,10 +40,21 @@ require 'nokogiri'
 				# get a random category 
 				category_count = Pin::CATEGORY_TYPE.count
 				random_category_index = rand(0..category_count)
-				puts random_category_index
+				#puts random_category_index
+
+				# parse the content and remove all html tag	
+				summary = Nokogiri::HTML.fragment(entry.summary)
+				summary.search('.//img').remove
+				summary.search('.//strong').remove
+				summary.search('.//br').remove
+				summary.search('.//span').remove
+				#puts summary
 
 				# put inside database
-				user.pins.create(:title=>entry.title, :image=>URI.parse(image_url), :category=>Pin::CATEGORY_TYPE[random_category_index])
+				user.pins.create(:title=>entry.title, 
+							     :image=>URI.parse(image_url), 
+							:description=>summary.to_s,
+							  :category=>Pin::CATEGORY_TYPE[random_category_index])
 			end
 		end
 
